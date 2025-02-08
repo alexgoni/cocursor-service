@@ -98,5 +98,3 @@ const handleMouseLeave = () => {
 
 document.addEventListener("mousemove", sendMyCursorData);
 document.addEventListener("mouseleave", handleMouseLeave);
-
-// TODO: 이름뿐만 아니라 아이디도 포함해서 색상 변경
