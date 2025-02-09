@@ -1,5 +1,5 @@
 .cursor-wrapper {
-  position: absolute;
+  position: fixed;
   width: 14px;
   height: 14px;
   pointer-events: none;

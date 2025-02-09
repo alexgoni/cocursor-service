@@ -39,8 +39,8 @@ export default function CoCursorProvider({
 
     const cursorData: CursorData = {
       id: userId.current,
-      x: e.clientX,
-      y: e.clientY,
+      x: e.pageX,
+      y: e.pageY,
       visible: true,
       name: userName.current,
     };

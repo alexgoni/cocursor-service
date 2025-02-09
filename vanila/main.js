@@ -78,8 +78,8 @@ ws.onmessage = async (event) => {
 const sendMyCursorData = (e) => {
   const cursorData = {
     id: userId,
-    x: e.clientX,
-    y: e.clientY,
+    x: e.pageX,
+    y: e.pageY,
     visible: true,
   };
 
