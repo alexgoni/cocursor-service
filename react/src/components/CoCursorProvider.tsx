@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import Cursor from "./Cursor";
 
 export interface CursorData {
@@ -13,9 +13,15 @@ interface Props {
   children: ReactNode;
   channel?: string;
   myName?: string;
+  blockInfoSend?: boolean;
 }
 
-export default function CoCursorProvider({ children, channel, myName }: Props) {
+export default function CoCursorProvider({
+  children,
+  channel,
+  myName,
+  blockInfoSend = false,
+}: Props) {
   const [cursors, setCursors] = useState<Record<string, CursorData>>({});
   const ws = useRef<WebSocket | null>(null);
   const userId = useRef(`user-${Math.random().toString(36).substring(2, 11)}`);
@@ -39,21 +45,32 @@ export default function CoCursorProvider({ children, channel, myName }: Props) {
     };
   }, [channel]);
 
-  const sendCursorPosition = (e: MouseEvent) => {
-    if (!ws.current || ws.current.readyState !== WebSocket.OPEN) return;
+  const sendCursorPosition = useCallback(
+    (e: MouseEvent) => {
+      if (
+        !ws.current ||
+        ws.current.readyState !== WebSocket.OPEN ||
+        blockInfoSend
+      ) {
+        return;
+      }
 
-    const cursorData: CursorData = {
-      id: userId.current,
-      x: e.pageX,
-      y: e.pageY,
-      visible: true,
-      name: userName.current,
-    };
-    ws.current?.send(JSON.stringify(cursorData));
-  };
+      const cursorData: CursorData = {
+        id: userId.current,
+        x: e.pageX,
+        y: e.pageY,
+        visible: true,
+        name: userName.current,
+      };
+      ws.current?.send(JSON.stringify(cursorData));
+    },
+    [blockInfoSend]
+  );
 
-  const handleMouseLeave = () => {
-    if (!ws.current || ws.current.readyState !== WebSocket.OPEN) return;
+  const sendCursorOff = () => {
+    if (!ws.current || ws.current.readyState !== WebSocket.OPEN) {
+      return;
+    }
 
     const cursorData = {
       id: userId.current,
@@ -64,13 +81,17 @@ export default function CoCursorProvider({ children, channel, myName }: Props) {
 
   useEffect(() => {
     window.addEventListener("mousemove", sendCursorPosition);
-    document.addEventListener("mouseleave", handleMouseLeave);
+    document.addEventListener("mouseleave", sendCursorOff);
 
     return () => {
       window.removeEventListener("mousemove", sendCursorPosition);
-      document.removeEventListener("mouseleave", handleMouseLeave);
+      document.removeEventListener("mouseleave", sendCursorOff);
     };
-  }, []);
+  }, [sendCursorPosition]);
+
+  useEffect(() => {
+    sendCursorOff();
+  }, [blockInfoSend]);
 
   return (
     <>
