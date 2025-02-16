@@ -15,35 +15,47 @@ wss.on("connection", (ws, req) => {
     return;
   }
 
-  // 🔹 프로젝트 방이 없으면 생성
+  // 프로젝트 방이 없으면 생성
   if (!projectRooms[apiKey]) {
     projectRooms[apiKey] = {};
   }
 
-  // 🔹 채널이 없으면 생성
+  // 채널이 없으면 생성
   if (!projectRooms[apiKey][channelName]) {
     projectRooms[apiKey][channelName] = new Set();
   }
 
-  // 🔹 현재 유저를 해당 프로젝트 & 채널에 추가
+  // 현재 유저를 해당 프로젝트 & 채널에 추가
   projectRooms[apiKey][channelName].add(ws);
 
   console.log(`[${apiKey} - ${channelName}] 새로운 사용자 연결`);
 
   ws.on("message", (data) => {
-    const cursorData = JSON.parse(data);
-
-    // 🔹 같은 프로젝트 & 같은 채널 사용자들에게만 메시지 전송
-    projectRooms[apiKey][channelName].forEach((client) => {
-      if (client !== ws && client.readyState === WebSocket.OPEN) {
-        client.send(JSON.stringify(cursorData));
-      }
-    });
+    try {
+      const cursorData = JSON.parse(data);
+      projectRooms[apiKey][channelName].forEach((client) => {
+        if (client !== ws && client.readyState === WebSocket.OPEN) {
+          client.send(JSON.stringify(cursorData));
+        }
+      });
+    } catch (error) {
+      console.error(`메시지 처리 중 에러 발생: ${error.message}`);
+    }
   });
 
   ws.on("close", () => {
     projectRooms[apiKey][channelName].delete(ws);
     console.log(`[${apiKey} - ${channelName}] 사용자가 연결 종료`);
+
+    // 채널이 비었으면 채널 삭제
+    if (projectRooms[apiKey][channelName].size === 0) {
+      delete projectRooms[apiKey][channelName];
+    }
+
+    // 프로젝트 방이 비었으면 프로젝트 방 삭제
+    if (Object.keys(projectRooms[apiKey]).length === 0) {
+      delete projectRooms[apiKey];
+    }
   });
 });
 

@@ -2,9 +2,9 @@ import stringToColor from "../utils/stringToColor";
 import type { CursorData } from "./CoCursorProvider";
 
 import "../styles/cursor.css";
-import { useMemo } from "react";
+import { memo, useMemo } from "react";
 
-export default function Cursor({ data }: { data: CursorData }) {
+function Cursor({ data }: { data: CursorData }) {
   const { x, y, name, visible, id } = data;
   const color = useMemo(() => stringToColor(id), [id]);
 
@@ -30,6 +30,8 @@ export default function Cursor({ data }: { data: CursorData }) {
     </div>
   );
 }
+
+export default memo(Cursor);
 
 function Arrow({ color }: { color: string }) {
   return (
