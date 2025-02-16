@@ -1,8 +1,6 @@
 import { ReactNode, useEffect, useRef, useState } from "react";
 import Cursor from "./Cursor";
 
-const WS_URL = "ws://localhost:8080";
-
 export interface CursorData {
   id: string;
   x: number;
@@ -11,18 +9,25 @@ export interface CursorData {
   name: string;
 }
 
-export default function CoCursorProvider({
-  children,
-}: {
+interface Props {
   children: ReactNode;
-}) {
+  channel?: string;
+  myName?: string;
+}
+
+export default function CoCursorProvider({ children, channel, myName }: Props) {
   const [cursors, setCursors] = useState<Record<string, CursorData>>({});
   const ws = useRef<WebSocket | null>(null);
-  const userId = useRef(`user-${Math.random().toString(36).substr(2, 9)}`);
-  const userName = useRef(`User ${userId.current.slice(-3)}`);
+  const userId = useRef(`user-${Math.random().toString(36).substring(2, 11)}`);
+  const userName = useRef(myName || `anonymous`);
 
   useEffect(() => {
-    ws.current = new WebSocket(WS_URL);
+    let wsURL = `ws://localhost:8080`;
+    if (channel) {
+      wsURL = `ws://localhost:8080?channel=${channel}`;
+    }
+
+    ws.current = new WebSocket(wsURL, [import.meta.env.VITE_COCURSOR_API_KEY]);
 
     ws.current.onmessage = (event) => {
       const cursorData: CursorData = JSON.parse(event.data);
@@ -32,7 +37,7 @@ export default function CoCursorProvider({
     return () => {
       ws.current?.close();
     };
-  }, []);
+  }, [channel]);
 
   const sendCursorPosition = (e: MouseEvent) => {
     if (!ws.current || ws.current.readyState !== WebSocket.OPEN) return;
