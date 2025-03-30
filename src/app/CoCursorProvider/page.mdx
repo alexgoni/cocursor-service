@@ -1,0 +1,18 @@
+import { Table } from "nextra/components";
+
+# CoCursorProvider
+
+## Props
+
+`CoCursorProvider` 컴포넌트에서 props를 통해 초기 설정을 진행합니다.
+
+| Prop            | Type                      | 설명                                                                   |
+| --------------- | ------------------------- | ---------------------------------------------------------------------- |
+| `apiKey`        | `string`                  | 필수값                                                                 |
+| `children`      | `ReactNode`               | -                                                                      |
+| `channel`       | `string`                  | 프로젝트 내에서 채널을 설정합니다. `channel="team1"`                   |
+| `myName`        | `string`                  | 다른 사용자에게 보이는 나의 커서 이름. `myName="alexgoni"`             |
+| `allowInfoSend` | `boolean`                 | 나의 커서 정보를 다른 사용자에게 전송할지 여부. `allowInfoSend={true}` |
+| `showMyCursor`  | `boolean`                 | 내 커서를 숨길지 여부. `showMyCursor={false}`                          |
+| `quality`       | `"high", "middle", "low"` | 품질 설정. 기본값은 `"high"`. `quality="middle"`                       |
+| `disabled`      | `boolean`                 | CoCursor 기능을 비활성화할지 여부. `disabled={true}`                   |
