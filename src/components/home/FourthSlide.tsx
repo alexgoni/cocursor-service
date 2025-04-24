@@ -3,23 +3,7 @@ import { motion, useAnimation } from 'framer-motion';
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 
-import ResponsiveRenderer from '../shared/ResponsiveRenderer';
-
 export default function FourthSlide() {
-  return (
-    <ResponsiveRenderer mobile={<MobileComponent />} pc={<PCComponent />} />
-  );
-}
-
-function MobileComponent() {
-  return (
-    <div className="flex h-full items-center justify-between p-6">
-      모바일입니당
-    </div>
-  );
-}
-
-function PCComponent() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const isIntersection = useIntersectionObserver(containerRef);
   const mainControls = useAnimation();
@@ -31,7 +15,10 @@ function PCComponent() {
   }, [isIntersection, mainControls]);
 
   return (
-    <div ref={containerRef} className="h-full px-20 py-28">
+    <div
+      ref={containerRef}
+      className="h-full overflow-hidden px-6 py-20 md:px-20 md:py-16 lg:py-28"
+    >
       <motion.h1
         className="text-center text-4xl leading-snug font-semibold text-white lg:text-5xl"
         animate={mainControls}
@@ -42,7 +29,10 @@ function PCComponent() {
         initial="hidden"
         transition={{ duration: 0.6 }}
       >
-        화면이 달라도, 경험은 같게
+        화면이 달라도,{' '}
+        <span className="bg-gradient-to-r from-[#FF7667] to-[#FFB199] bg-clip-text text-transparent">
+          경험은 같게
+        </span>
       </motion.h1>
       <motion.p
         className="mt-2 text-center text-lg text-gray-300"
@@ -57,7 +47,7 @@ function PCComponent() {
         디스플레이 비율을 기준으로 위치를 추적합니다
       </motion.p>
 
-      <div className="mt-20 -ml-12 flex items-center justify-center gap-20 lg:mt-14">
+      <div className="mt-8 flex items-center justify-center gap-4 md:mt-14 md:-ml-12 md:gap-20">
         <div>
           <video
             autoPlay

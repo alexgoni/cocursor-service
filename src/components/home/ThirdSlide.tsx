@@ -2,8 +2,8 @@ import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import useMediaQuery, { PC_WIDTH } from '@/hooks/useMediaQuery';
 import { useCoCursor } from 'cocursor';
 import { motion, useAnimation } from 'framer-motion';
-import Image from 'next/image';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import ShikiHighlighter from 'react-shiki';
 
 export default function ThirdSlide() {
   const isPC = useMediaQuery(PC_WIDTH);
@@ -31,6 +31,7 @@ function TabletComponent() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const isIntersection = useIntersectionObserver(containerRef);
   const mainControls = useAnimation();
+  const [code, setCode] = useState('');
 
   useEffect(() => {
     if (isIntersection) {
@@ -38,8 +39,33 @@ function TabletComponent() {
     }
   }, [isIntersection, mainControls]);
 
+  useEffect(() => {
+    setCode(
+      `function Component() {
+  const { setShowMyCursor, setAllowInfoSend, setDisabled } = useCoCursor();
+  
   return (
-    <div ref={containerRef} className="h-full px-6 py-20 md:px-20 lg:px-40">
+    <>
+      <button type="button" onClick={() => setShowMyCursor((prev) => !prev)}>
+        내 커서 ${showMyCursor ? '숨기기' : '보이기'}
+      </button>
+      <button type="button" onClick={() => setAllowInfoSend((prev) => !prev)}>
+        내 정보 공유 ${allowInfoSend ? '끄기' : '켜기'}
+      </button>
+      <button type="button" onClick={() => setDisabled((prev) => !prev)}>
+        CoCursor ${disabled ? '활성화' : '비활성화'}
+      </button>
+    </>
+  );
+}`,
+    );
+  }, [showMyCursor, allowInfoSend, disabled]);
+
+  return (
+    <div
+      ref={containerRef}
+      className="h-full overflow-hidden px-6 py-20 md:px-20 lg:px-40"
+    >
       <motion.h1
         className="text-center text-4xl font-semibold"
         animate={mainControls}
@@ -50,7 +76,10 @@ function TabletComponent() {
         initial="hidden"
         transition={{ duration: 0.6 }}
       >
-        CoCursor의 모든 기능을 쉽게 컨트롤해보세요
+        CoCursor의{' '}
+        <span className="bg-gradient-to-r from-[#FF7667] to-[#FFB199] bg-clip-text text-transparent">
+          모든 기능을 쉽게 컨트롤해보세요
+        </span>
       </motion.h1>
       <motion.p
         className="mt-2 text-center text-lg text-gray-300"
@@ -64,15 +93,16 @@ function TabletComponent() {
       >
         DX를 고려해 설계했습니다
       </motion.p>
-      <Image
-        src="/images/home/code.png"
-        alt="code"
-        width={700}
-        height={400}
-        className="mx-auto mt-16 overflow-hidden rounded-2xl border-4 border-[#FF7667] shadow-lg shadow-[#FF766770]"
-      />
+      <ShikiHighlighter
+        language="tsx"
+        theme="kanagawa-wave"
+        showLanguage={false}
+        className="mt-8 hidden w-full overflow-hidden rounded-2xl border-4 border-[#FF7667] text-xs shadow-lg shadow-[#FF766770] sm:block md:mt-8 md:text-sm xl:w-[80%]"
+      >
+        {code}
+      </ShikiHighlighter>
 
-      <div className="mt-10 flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-8">
+      <div className="mt-16 flex flex-col items-center justify-center gap-6 sm:mt-10 sm:flex-row sm:gap-8">
         <button
           type="button"
           onClick={() => setShowMyCursor((prev) => !prev)}
@@ -123,6 +153,7 @@ function PCComponent() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const isIntersection = useIntersectionObserver(containerRef);
   const mainControls = useAnimation();
+  const [code, setCode] = useState('');
 
   useEffect(() => {
     if (isIntersection) {
@@ -130,10 +161,32 @@ function PCComponent() {
     }
   }, [isIntersection, mainControls]);
 
+  useEffect(() => {
+    setCode(
+      `function Component() {
+  const { setShowMyCursor, setAllowInfoSend, setDisabled } = useCoCursor();
+  
+  return (
+    <>
+      <button type="button" onClick={() => setShowMyCursor((prev) => !prev)}>
+        내 커서 ${showMyCursor ? '숨기기' : '보이기'}
+      </button>
+      <button type="button" onClick={() => setAllowInfoSend((prev) => !prev)}>
+        내 정보 공유 ${allowInfoSend ? '끄기' : '켜기'}
+      </button>
+      <button type="button" onClick={() => setDisabled((prev) => !prev)}>
+        CoCursor ${disabled ? '활성화' : '비활성화'}
+      </button>
+    </>
+  );
+}`,
+    );
+  }, [showMyCursor, allowInfoSend, disabled]);
+
   return (
     <div
       ref={containerRef}
-      className="flex h-full items-center justify-between px-12 py-40 2xl:px-44"
+      className="flex h-full items-center justify-between overflow-hidden px-12 py-40 2xl:px-44"
     >
       <motion.div
         animate={mainControls}
@@ -152,13 +205,14 @@ function PCComponent() {
           해보세요
         </h1>
         <p className="mt-2 text-lg text-gray-300">DX를 고려해 설계했습니다</p>
-        <Image
-          src="/images/home/code.png"
-          alt="code"
-          width={700}
-          height={400}
-          className="mt-8 overflow-hidden rounded-2xl border-4 border-[#FF7667] shadow-lg shadow-[#FF766770]"
-        />
+        <ShikiHighlighter
+          language="tsx"
+          theme="kanagawa-wave"
+          showLanguage={false}
+          className="mx-auto mt-12 overflow-hidden rounded-2xl border-4 border-[#FF7667] shadow-lg shadow-[#FF766770]"
+        >
+          {code}
+        </ShikiHighlighter>
       </motion.div>
 
       <motion.div

@@ -11,8 +11,29 @@ export default function FirstSlide() {
 
 function MobileComponent() {
   return (
-    <div className="flex h-full items-center justify-between p-6">
-      모바일입니당
+    <div className="flex h-full items-center justify-between p-6 py-40">
+      <motion.div
+        initial={{ opacity: 0, x: -40 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        <h1 className="text-4xl leading-tight font-semibold lg:text-6xl">
+          <span className="bg-gradient-to-r from-[#FF7667] to-[#FFB199] bg-clip-text text-transparent">
+            Figma의 커서를
+          </span>
+          <br />
+          당신의 웹사이트로 옮겨보세요
+        </h1>
+        <p className="mt-2 text-lg text-gray-300">
+          웹에서 실시간 커서 협업을 경험하세요
+        </p>
+        <Link
+          href="/login"
+          className="mt-16 inline-block rounded-lg bg-[#FFB199] px-6 py-3 text-black transition hover:brightness-110"
+        >
+          로그인
+        </Link>
+      </motion.div>
     </div>
   );
 }
