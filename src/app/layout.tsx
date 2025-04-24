@@ -1,6 +1,5 @@
 import '@/styles/globals.css';
 import { Layout, Navbar } from 'nextra-theme-docs';
-import 'nextra-theme-docs/style.css';
 import { Head } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
 import { ReactNode } from 'react';
