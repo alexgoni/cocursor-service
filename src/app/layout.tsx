@@ -1,5 +1,6 @@
+import Navbar from '@/components/layout/Navbar';
 import '@/styles/globals.css';
-import { Layout, Navbar } from 'nextra-theme-docs';
+import { Layout } from 'nextra-theme-docs';
 import { Head } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
 import { ReactNode } from 'react';
@@ -8,14 +9,6 @@ export const metadata = {
   // Define your metadata here
   // For more information on metadata API, see: https://nextjs.org/docs/app/building-your-application/optimizing/metadata
 };
-
-const navbar = (
-  <Navbar
-    logo={<b>CoCursor</b>}
-    projectLink="https://github.com/shuding/nextra"
-  />
-);
-const footer = <></>;
 
 export default async function RootLayout({
   children,
@@ -33,17 +26,19 @@ export default async function RootLayout({
       <Head
       // ... Your additional head options
       >
-        {/* Your additional tags should be passed as `children` of `<Head>` element */}
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+        />
       </Head>
       <body>
         <Layout
-          navbar={navbar}
+          navbar={<Navbar />}
           pageMap={await getPageMap()}
-          docsRepositoryBase="https://github.com/shuding/nextra/tree/main/docs"
-          footer={footer}
+          docsRepositoryBase="https://github.com/alexgoni/cocursor"
+          footer={<></>}
           darkMode={false}
           nextThemes={{ defaultTheme: 'dark' }}
-          // ... Your additional layout options
         >
           {children}
         </Layout>

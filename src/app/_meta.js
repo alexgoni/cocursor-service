@@ -1,4 +1,3 @@
-/* eslint-disable import/no-anonymous-default-export */
 export default {
   index: {
     display: 'hidden',
@@ -7,8 +6,8 @@ export default {
     type: 'page',
     title: 'Documentation',
   },
-  login: {
+  key: {
     type: 'page',
-    title: 'Login',
+    title: 'Get API Key',
   },
 };

@@ -1,31 +1,30 @@
-/* eslint-disable import/no-anonymous-default-export */
 export default {
   introduction: {
-    title: "소개",
+    title: '소개',
     theme: {
       breadcrumb: false,
     },
   },
   installation: {
-    title: "설치",
+    title: '설치',
     theme: {
       breadcrumb: false,
     },
   },
   CoCursorProvider: {
-    title: "CoCursorProvider",
+    title: 'CoCursorProvider',
     theme: {
       breadcrumb: false,
     },
   },
   useCoCursor: {
-    title: "useCoCursor",
+    title: 'useCoCursor',
     theme: {
       breadcrumb: false,
     },
   },
-  "custom-style": {
-    title: "Custom Style",
+  'custom-style': {
+    title: 'Custom Style',
     theme: {
       breadcrumb: false,
     },

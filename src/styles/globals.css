@@ -23,5 +23,10 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+body,
+input,
+button {
+  font-family: Pretendard, Arial, Helvetica, sans-serif;
 }

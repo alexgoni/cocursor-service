@@ -28,10 +28,10 @@ function MobileComponent() {
           웹에서 실시간 커서 협업을 경험하세요
         </p>
         <Link
-          href="/login"
+          href="/key"
           className="mt-16 inline-block rounded-lg bg-[#FFB199] px-6 py-3 text-black transition hover:brightness-110"
         >
-          로그인
+          Get API Key
         </Link>
       </motion.div>
     </div>
@@ -57,10 +57,10 @@ function PCComponent() {
           웹에서 실시간 커서 협업을 경험하세요
         </p>
         <Link
-          href="/login"
+          href="/key"
           className="mt-6 inline-block rounded-lg bg-[#FFB199] px-6 py-3 text-black transition hover:brightness-110"
         >
-          로그인
+          Get API Key
         </Link>
       </motion.div>
       <motion.div
