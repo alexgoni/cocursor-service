@@ -1,6 +1,7 @@
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import { motion, useAnimation } from 'framer-motion';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useEffect, useRef } from 'react';
 
 export default function FourthSlide() {
@@ -76,7 +77,7 @@ export default function FourthSlide() {
 
       <div className="mt-12 flex justify-center">
         <Link
-          href="/login"
+          href="/key"
           className="inline-block rounded-xl bg-[#FFB199] px-8 py-2 text-lg font-semibold text-black shadow-2xl transition hover:brightness-110"
         >
           지금 시작하기

@@ -1,4 +1,7 @@
 import Navbar from '@/components/layout/Navbar';
+import QueryClientProvider from '@/components/layout/QueryClientProvider';
+import ToastContainer from '@/components/layout/ToastContainer';
+import UserProvider from '@/context/user';
 import '@/styles/globals.css';
 import { Layout } from 'nextra-theme-docs';
 import { Head } from 'nextra/components';
@@ -32,16 +35,21 @@ export default async function RootLayout({
         />
       </Head>
       <body>
-        <Layout
-          navbar={<Navbar />}
-          pageMap={await getPageMap()}
-          docsRepositoryBase="https://github.com/alexgoni/cocursor"
-          footer={<></>}
-          darkMode={false}
-          nextThemes={{ defaultTheme: 'dark' }}
-        >
-          {children}
-        </Layout>
+        <QueryClientProvider>
+          <UserProvider>
+            <Layout
+              navbar={<Navbar />}
+              pageMap={await getPageMap()}
+              docsRepositoryBase="https://github.com/alexgoni/cocursor"
+              footer={<></>}
+              darkMode={false}
+              nextThemes={{ defaultTheme: 'dark' }}
+            >
+              {children}
+            </Layout>
+            <ToastContainer />
+          </UserProvider>
+        </QueryClientProvider>
       </body>
     </html>
   );

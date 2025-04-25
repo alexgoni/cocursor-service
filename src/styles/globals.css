@@ -30,3 +30,7 @@ input,
 button {
   font-family: Pretendard, Arial, Helvetica, sans-serif;
 }
+
+button {
+  cursor: pointer;
+}

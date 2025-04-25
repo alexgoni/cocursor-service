@@ -4,15 +4,21 @@ import FirstSlide from '@/components/home/FirstSlide';
 import FourthSlide from '@/components/home/FourthSlide';
 import SecondSlide from '@/components/home/SecondSlide';
 import ThirdSlide from '@/components/home/ThirdSlide';
-import CoCursorProvider from 'cocursor';
+import { useUserContext } from '@/context/user';
+import CoCursorProvider, { useCoCursor } from 'cocursor';
 import 'swiper/css';
 import 'swiper/css/mousewheel';
 import { Mousewheel } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 export default function Home() {
+  const { user } = useUserContext();
+
   return (
-    <CoCursorProvider apiKey={process.env.NEXT_PUBLIC_COCURSOR_API_KEY!}>
+    <CoCursorProvider
+      apiKey={process.env.NEXT_PUBLIC_COCURSOR_API_KEY!}
+      myName={!!user ? user.displayName! : 'anonymous'}
+    >
       <div className="h-[calc(100vh-64px)] overflow-y-hidden">
         <Swiper
           direction="vertical"
