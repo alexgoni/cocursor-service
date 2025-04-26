@@ -12,6 +12,7 @@ import {
 
 interface UserContextType {
   user: User | null;
+  authReady: boolean;
 }
 
 const UserContext = createContext<UserContextType | null>(null);
@@ -28,16 +29,20 @@ export function useUserContext() {
 
 export default function UserProvider({ children }: { children: ReactNode }) {
   const auth = getAuth(app);
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | null>(null);
+  const [authReady, setAuthReady] = useState(false);
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+      setAuthReady(true);
     });
+
+    return () => unsubscribe();
   }, [auth]);
 
   return (
-    <UserContext.Provider value={{ user: currentUser }}>
+    <UserContext.Provider value={{ user, authReady }}>
       {children}
     </UserContext.Provider>
   );
