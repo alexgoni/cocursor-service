@@ -1,3 +1,4 @@
+import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
 import QueryClientProvider from '@/components/layout/QueryClientProvider';
 import ToastContainer from '@/components/layout/ToastContainer';
@@ -41,7 +42,7 @@ export default async function RootLayout({
               navbar={<Navbar />}
               pageMap={await getPageMap()}
               docsRepositoryBase="https://github.com/alexgoni/cocursor"
-              footer={<></>}
+              footer={<Footer />}
               darkMode={false}
               nextThemes={{ defaultTheme: 'dark' }}
             >

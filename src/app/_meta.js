@@ -1,6 +1,9 @@
 export default {
   index: {
     display: 'hidden',
+    theme: {
+      footer: false,
+    },
   },
   login: {
     display: 'hidden',
