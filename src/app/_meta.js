@@ -8,9 +8,6 @@ export default {
   'sign-up': {
     display: 'hidden',
   },
-  'my-page': {
-    display: 'hidden',
-  },
   docs: {
     type: 'page',
     title: 'Documentation',

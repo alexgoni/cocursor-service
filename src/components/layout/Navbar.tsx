@@ -49,6 +49,7 @@ export default function CustomNavbar() {
           <b>CoCursor</b>
         </div>
       }
+      projectLink="https://github.com/alexgoni/cocursor"
     >
       {authReady &&
         (!!user ? (
@@ -65,12 +66,6 @@ export default function CustomNavbar() {
               className="z-40"
             >
               <div className="mt-2 w-36 rounded-lg border border-neutral-700 bg-neutral-900 p-2 shadow-lg">
-                <button
-                  onClick={() => router.push('/my-page')}
-                  className="w-full rounded-md px-4 py-2 text-left text-sm text-neutral-200 transition-colors hover:bg-neutral-800"
-                >
-                  마이페이지
-                </button>
                 <button
                   onClick={() => mutation.mutate()}
                   className="w-full rounded-md px-4 py-2 text-left text-sm text-red-400 transition-colors hover:bg-neutral-800"
