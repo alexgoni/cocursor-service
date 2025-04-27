@@ -11,7 +11,7 @@ export default function FirstSlide() {
 
 function MobileComponent() {
   return (
-    <div className="flex h-full items-center justify-between p-6 py-40">
+    <div className="flex h-full items-center justify-between px-6">
       <motion.div
         initial={{ opacity: 0, x: -40 }}
         animate={{ opacity: 1, x: 0 }}
@@ -40,7 +40,7 @@ function MobileComponent() {
 
 function PCComponent() {
   return (
-    <div className="flex h-full items-center justify-between pr-28 pl-6 xl:p-40 2xl:p-60">
+    <div className="flex h-full items-center justify-between pr-28 pl-6 xl:px-40 2xl:px-60">
       <motion.div
         initial={{ opacity: 0, x: -40 }}
         animate={{ opacity: 1, x: 0 }}
