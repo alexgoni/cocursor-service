@@ -1,12 +1,13 @@
 export default {
   introduction: {
-    title: '소개',
+    title: 'Introduction',
     theme: {
       breadcrumb: false,
+      toc: false,
     },
   },
-  installation: {
-    title: '설치',
+  'get-started': {
+    title: 'Get Started',
     theme: {
       breadcrumb: false,
     },

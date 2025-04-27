@@ -41,12 +41,12 @@ export default async function RootLayout({
             <Layout
               navbar={<Navbar />}
               pageMap={await getPageMap()}
-              docsRepositoryBase="https://github.com/alexgoni/cocursor"
+              docsRepositoryBase="https://github.com/alexgoni/cocursor-service/tree/main"
               footer={<Footer />}
               darkMode={false}
               nextThemes={{ defaultTheme: 'dark' }}
             >
-              {children}
+              <div className="min-h-[calc(100vh-64px)]">{children}</div>
             </Layout>
             <ToastContainer />
           </UserProvider>

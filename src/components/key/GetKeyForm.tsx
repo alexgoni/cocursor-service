@@ -124,7 +124,7 @@ export default function GetKeyForm() {
             <IOSSwitch checked={isProductionKey} onChange={handleSwitch} />
           </div>
           <Link
-            href="/docs/installation#보안-모드"
+            href="/docs/get-started#운영개발-키"
             className="flex items-center gap-1"
           >
             <HelpOutlineIcon fontSize="small" />

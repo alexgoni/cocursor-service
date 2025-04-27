@@ -20,7 +20,7 @@ export default function KeyPage() {
   if (!authReady || !user) return null;
 
   return (
-    <div className="min-h-[calc(100vh-64px)] px-4 py-8 sm:px-8 md:p-16 xl:px-30 2xl:px-60">
+    <div className="px-4 py-8 sm:px-8 md:p-16 xl:px-30 2xl:px-60">
       <GetKeyForm />
       <div className="my-12 border-t border-gray-700" />
       <KeyList />

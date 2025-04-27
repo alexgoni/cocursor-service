@@ -1,0 +1,65 @@
+import { Tabs } from 'nextra/components';
+
+# Get Started
+
+## API Key
+
+**CoCusror**를 사용하기 위해서는 API Key를 발급받아야 합니다.
+
+### 운영/개발 키
+
+프로젝트를 배포하는 단계에서는 API Key 발급 시 운영키 사용을 권장합니다.  
+운영키를 사용하면, 배포된 URL을 추가로 등록해야 하며, 서버가 웹소켓 연결 시 해당 URL을 검증하여 안전한 연결을 보장합니다.
+
+단, 운영키는 등록된 URL만 허용하기 때문에 개발 환경에서는 CoCursor 기능이 작동하지 않습니다.
+따라서 개발 환경과 운영 환경에 맞춰 env 파일을 분리하여 각각 다른 키를 사용하는 것을 권장합니다.
+
+```env filename=".env.local"
+REACT_APP_COCURSOR_API_KEY=...
+```
+
+```env filename=".env.production"
+REACT_APP_COCURSOR_API_KEY=...
+```
+
+## Install Package
+
+API Key를 발급받았다면, 아래 명령어를 실행하여 프로젝트에 CoCursor를 설치하세요.
+
+<Tabs items={['npm', 'yarn', 'pnpm']}>
+  <Tabs.Tab>
+  ```sh copy 
+  npm i cocursor 
+  ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+  ```sh copy 
+  yarn add cocursor 
+  ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+  ```sh copy 
+  pnpm add cocursor 
+  ```
+  </Tabs.Tab>
+</Tabs>
+
+<br />
+
+이후 **CoCursor**를 적용하고자 하는 페이지 컴포넌트 최상단에 다음과 같이 적용해주세요.
+
+```tsx
+import CoCursorProvider from 'cocursor';
+
+export default function PageComponent() {
+  return (
+    <CoCursorProvider apiKey={process.env.REACT_APP_COCURSOR_API_KEY as string}>
+      {/* ... */}
+    </CoCursorProvider>
+  );
+}
+```
+
+**Next.js App Router**를 사용하는 경우 `"use client"` 지시어를 파일에 추가해주세요.  
+
+
