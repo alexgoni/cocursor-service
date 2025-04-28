@@ -22,7 +22,7 @@ function MobileComponent() {
             Figma의 커서를
           </span>
           <br />
-          당신의 웹사이트로 옮겨보세요
+          당신의 웹페이지 위로 옮겨보세요
         </h1>
         <p className="mt-2 text-lg text-gray-300">
           웹에서 실시간 커서 협업을 경험하세요
@@ -51,7 +51,7 @@ function PCComponent() {
             Figma의 커서를
           </span>
           <br />
-          당신의 웹사이트로 옮겨보세요
+          당신의 웹페이지 위로 옮겨보세요
         </h1>
         <p className="mt-4 text-lg text-gray-300">
           웹에서 실시간 커서 협업을 경험하세요

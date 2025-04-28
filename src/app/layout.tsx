@@ -4,14 +4,27 @@ import QueryClientProvider from '@/components/layout/QueryClientProvider';
 import ToastContainer from '@/components/layout/ToastContainer';
 import UserProvider from '@/context/user';
 import '@/styles/globals.css';
+import type { Metadata } from 'next';
 import { Layout } from 'nextra-theme-docs';
 import { Head } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
 import { ReactNode } from 'react';
 
-export const metadata = {
-  // Define your metadata here
-  // For more information on metadata API, see: https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+export const metadata: Metadata = {
+  title: {
+    default: 'CoCursor',
+    template: 'CoCursor | %s',
+  },
+  description: 'Figma의 커서를 당신의 웹페이지 위로 옮겨보세요.',
+  metadataBase: new URL('https://cocursor.vercel.app'),
+  alternates: {
+    canonical: 'https://cocursor.vercel.app',
+  },
+  icons: {
+    icon: '/favicon.ico',
+  },
+  // opengraph
+  // verification
 };
 
 export default async function RootLayout({
@@ -46,7 +59,7 @@ export default async function RootLayout({
               darkMode={false}
               nextThemes={{ defaultTheme: 'dark' }}
             >
-              <div className="min-h-[calc(100vh-64px)]">{children}</div>
+              <div className="min-h-[calc(100dvh-64px)]">{children}</div>
             </Layout>
             <ToastContainer />
           </UserProvider>

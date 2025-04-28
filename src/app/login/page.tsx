@@ -56,7 +56,7 @@ function LoginForm() {
   }, [formValue]);
 
   return (
-    <div className="flex h-[calc(100vh-64px)] items-center justify-center px-4 pb-16">
+    <div className="flex h-[calc(100dvh-64px)] items-center justify-center px-4 pb-16">
       <div className="w-full max-w-md space-y-8 rounded-2xl border-2 border-[#FF7667] bg-[#1a1a1a] p-10 shadow-lg shadow-[#FF766770]">
         <h2 className="text-center text-3xl font-bold text-white">로그인</h2>
         <form className="space-y-6" onSubmit={handleSubmit}>

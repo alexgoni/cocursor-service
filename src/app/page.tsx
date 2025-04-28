@@ -19,7 +19,7 @@ export default function Home() {
       apiKey={process.env.NEXT_PUBLIC_COCURSOR_API_KEY!}
       myName={!!user ? user.displayName! : 'anonymous'}
     >
-      <div className="h-[calc(100vh-64px)] overflow-y-hidden">
+      <div className="h-[calc(100dvh-64px)] overflow-y-hidden">
         <Swiper
           direction="vertical"
           slidesPerView={1}
