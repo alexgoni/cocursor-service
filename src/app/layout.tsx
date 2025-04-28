@@ -23,8 +23,9 @@ export const metadata: Metadata = {
   icons: {
     icon: '/favicon.ico',
   },
-  // opengraph
-  // verification
+  verification: {
+    google: 'lCueZr4AwkB0nk57FvIe7cBJa0NG7ur2l95G-ePMFW4',
+  },
 };
 
 export default async function RootLayout({
