@@ -5,6 +5,7 @@ import ToastContainer from '@/components/layout/ToastContainer';
 import UserProvider from '@/context/user';
 import '@/styles/globals.css';
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { Layout } from 'nextra-theme-docs';
 import { Head } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
@@ -44,6 +45,22 @@ export default async function RootLayout({
       <Head
       // ... Your additional head options
       >
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-41YB514ES3"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-41YB514ES3', {
+              page_path: window.location.pathname,
+            });
+          `}
+        </Script>
+        {/* Pretendard */}
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
