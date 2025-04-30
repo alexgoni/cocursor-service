@@ -7,14 +7,14 @@ const {
   // state
   channel,
   myName,
-  allowInfoSend,
+  allowMyCursorShare,
   showMyCursor,
   quality,
   disabled,
   // setState
   setChannel,
   setMyName,
-  setAllowInfoSend,
+  setAllowMyCursorShare,
   setShowMyCursor,
   setQuality,
   setDisabled,
@@ -25,7 +25,7 @@ const {
 
 - `channel` (`string | undefined`): 현재 채널.
 - `myName` (`string | undefined`): 사용자 커서 이름.
-- `allowInfoSend` (`boolean`): 나의 커서 정보 수신 여부.
+- `allowMyCursorShare` (`boolean`): 나의 커서 정보 수신 여부.
 - `showMyCursor` (`boolean | undefined`): 나의 커서 표시 여부.
 - `quality` (`"high" | "middle" | "low"`): 현재 품질.
 - `disabled` (`boolean`): CoCursor 기능의 활성화 여부.
@@ -34,7 +34,7 @@ const {
 
 - `setChannel`: 채널 설정.
 - `setMyName`: 사용자 커서 이름 설정.
-- `setAllowInfoSend`: 나의 커서 정보 수신 여부 설정.
+- `setAllowMyCursorShare`: 나의 커서 정보 수신 여부 설정.
 - `setShowMyCursor`: 나의 커서 표시 여부 설정.
 - `setQuality`: 품질 설정.
 - `setDisabled`: CoCursor 기능을 활성화하거나 비활성화.

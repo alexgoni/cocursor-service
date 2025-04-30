@@ -2710,10 +2710,10 @@ clsx@^2.0.0, clsx@^2.1.0, clsx@^2.1.1:
   resolved "https://registry.yarnpkg.com/clsx/-/clsx-2.1.1.tgz#eed397c9fd8bd882bfb18deab7102049a2f32999"
   integrity sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==
 
-cocursor@^0.0.9:
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/cocursor/-/cocursor-0.0.9.tgz#56e9c36c17747816dbdb6f01425c30b43f85af94"
-  integrity sha512-LuSyCdpZTihefxPAJ2Eq+sXKz/ZtKLNeh6/1rk01/u7280mjza+LpbobYaDlCT2sBJGVnKlAvC/avW4SG1UJoA==
+cocursor@0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/cocursor/-/cocursor-0.1.0.tgz#374bf97a8752a31283cb7f88988b6f9c9e0de04d"
+  integrity sha512-1XipaLu2GGs4+usluQQk1vICKfntrLP8aZnyzoeIGPGDDYjGQe5J8dFQ//P5WCVkWOTo/u8pTVBdmPDDP/QPRA==
 
 collapse-white-space@^2.0.0:
   version "2.1.0"

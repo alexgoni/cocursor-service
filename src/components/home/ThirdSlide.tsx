@@ -8,8 +8,8 @@ export default function ThirdSlide() {
   const {
     showMyCursor,
     setShowMyCursor,
-    allowInfoSend,
-    setAllowInfoSend,
+    allowMyCursorShare,
+    setAllowMyCursorShare,
     disabled,
     setDisabled,
   } = useCoCursor();
@@ -27,15 +27,15 @@ export default function ThirdSlide() {
   useEffect(() => {
     setCode(
       `function Component() {
-  const { setShowMyCursor, setAllowInfoSend, setDisabled } = useCoCursor();
+  const { setShowMyCursor, setAllowMyCursorShare, setDisabled } = useCoCursor();
   
   return (
     <>
       <button type="button" onClick={() => setShowMyCursor((prev) => !prev)}>
         내 커서 ${showMyCursor ? '숨기기' : '보이기'}
       </button>
-      <button type="button" onClick={() => setAllowInfoSend((prev) => !prev)}>
-        내 정보 공유 ${allowInfoSend ? '끄기' : '켜기'}
+      <button type="button" onClick={() => setAllowMyCursorShare((prev) => !prev)}>
+        내 정보 공유 ${allowMyCursorShare ? '끄기' : '켜기'}
       </button>
       <button type="button" onClick={() => setDisabled((prev) => !prev)}>
         CoCursor ${disabled ? '활성화' : '비활성화'}
@@ -44,7 +44,7 @@ export default function ThirdSlide() {
   );
 }`,
     );
-  }, [showMyCursor, allowInfoSend, disabled]);
+  }, [showMyCursor, allowMyCursorShare, disabled]);
 
   return (
     <div
@@ -102,14 +102,14 @@ export default function ThirdSlide() {
           </button>
           <button
             type="button"
-            onClick={() => setAllowInfoSend((prev) => !prev)}
+            onClick={() => setAllowMyCursorShare((prev) => !prev)}
             className={`flex w-[166px] cursor-pointer items-center justify-center rounded-lg border-[1px] px-4 py-2 text-nowrap transition-all duration-150 outline-none select-none active:translate-y-2 active:border-b-[0px] sm:w-auto ${
-              allowInfoSend
+              allowMyCursorShare
                 ? 'border-teal-400 bg-teal-500 text-gray-200 [box-shadow:0_8px_0_0_#009689,0_13px_0_0_#1b70f841] active:[box-shadow:0_0px_0_0_#1b6ff8,0_0px_0_0_#1b70f841]'
                 : 'border-red-400 bg-red-500 text-gray-200 [box-shadow:0_8px_0_0_#f87171,0_13px_0_0_#f8717141] active:[box-shadow:0_0px_0_0_#f87171,0_0px_0_0_#f8717141]'
             }`}
           >
-            {allowInfoSend ? '내 정보 공유 끄기' : '내 정보 공유 켜기'}
+            {allowMyCursorShare ? '내 정보 공유 끄기' : '내 정보 공유 켜기'}
           </button>
           <button
             type="button"

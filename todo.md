@@ -2,17 +2,37 @@
 
 개발
 
-- 서버 부하테스트, 클라이언트 부하테스트
-- MyCursor 없는거를 default
-- use client 삭제
-- React 19 Nextjs 15에서 안됨
-- 중간에 ws 끊겨버림 => 커서 남음 : Maybe NginX proxy_read_timeout
-- 커서 남아있음
-- myname 동적 적용 안됨 => initial Props이라 그런듯
-- 키 없어도 배포 시 되는 경우? => MyCursor는 보임 | 연결 성공 시 콘솔 찍기
+클라이언트
+
+- [x] 연결 성공 시 콘솔 찍기
+- [x]비활성화 시 mycursor 삭제
+- [x] onclose 메시지
+- [x] 웹소켓 끊긴 경우 커서 남음
+
+- [x] MyCursor 없는거를 default
+- [x] 키 없어도 MyCursor는 보이는게 맞는가? 예
+
+- [x] 이름
+- [x] 문서 변경
+
+- [x] use client 삭제
+- [x] React 19 Next15
+
+- [x] myName 동적 적용 안됨: initial Props
+
+- [x] 부하테스트 => 50개까진 cpu 점유율 50 이내
+
+서버
+
+- [x] 서버 부하테스트
 
 서비스
 
-- GA
 - docs: 원리
-- README
+- F&Q
+
+QA
+
+- [] 여러 개 서비스에서 사용하는 경우
+- [] props 동적 변경 확인
+- [] docs qa, api key 수정
