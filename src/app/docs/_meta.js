@@ -3,7 +3,6 @@ export default {
     title: 'Introduction',
     theme: {
       breadcrumb: false,
-      toc: false,
     },
   },
   'get-started': {
