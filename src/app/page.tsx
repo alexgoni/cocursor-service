@@ -5,7 +5,7 @@ import FourthSlide from '@/components/home/FourthSlide';
 import SecondSlide from '@/components/home/SecondSlide';
 import ThirdSlide from '@/components/home/ThirdSlide';
 import { useUserContext } from '@/context/user';
-import CoCursorProvider, { useCoCursor } from 'cocursor';
+import CoCursorProvider from 'cocursor';
 import 'swiper/css';
 import 'swiper/css/mousewheel';
 import { Mousewheel } from 'swiper/modules';
@@ -18,6 +18,7 @@ export default function Home() {
     <CoCursorProvider
       apiKey={process.env.NEXT_PUBLIC_COCURSOR_API_KEY!}
       myName={!!user ? user.displayName! : 'anonymous'}
+      showMyCursor
     >
       <div className="h-[calc(100dvh-64px)] overflow-y-hidden">
         <Swiper

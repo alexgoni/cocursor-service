@@ -1,6 +1,7 @@
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import { useCoCursor } from 'cocursor';
 import { motion, useAnimation } from 'framer-motion';
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import ShikiHighlighter from 'react-shiki';
 
@@ -123,6 +124,14 @@ export default function ThirdSlide() {
             {disabled ? 'CoCursor 활성화' : 'CoCursor 비활성화'}
           </button>
         </div>
+        <Link
+          href="/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-6 block text-center text-sm text-gray-300 underline"
+        >
+          새 창을 열어 확인해보세요!
+        </Link>
       </div>
     </div>
   );

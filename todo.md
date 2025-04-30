@@ -33,6 +33,6 @@
 
 QA
 
-- [] 여러 개 서비스에서 사용하는 경우
-- [] props 동적 변경 확인
-- [] docs qa, api key 수정
+- [x] 여러 개 서비스에서 사용하는 경우
+- [x] props 동적 변경 확인
+- [x] docs qa, api key 수정
