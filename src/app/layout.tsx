@@ -7,7 +7,7 @@ import '@/styles/globals.css';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import { Layout } from 'nextra-theme-docs';
-import { Banner, Head } from 'nextra/components';
+import { Head } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
 import { ReactNode } from 'react';
 
@@ -71,11 +71,6 @@ export default async function RootLayout({
           <UserProvider>
             <Layout
               navbar={<Navbar />}
-              banner={
-                <Banner dismissible={false}>
-                  ⚠️ Sorry, the service is currently unavailable.
-                </Banner>
-              }
               pageMap={await getPageMap()}
               docsRepositoryBase="https://github.com/alexgoni/cocursor-service/tree/main"
               footer={<Footer />}
